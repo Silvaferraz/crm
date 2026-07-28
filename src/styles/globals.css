@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-marca: var(--tenant-primaria, #ffffff);
+  --color-fundo: var(--tenant-fundo, #0c0c0c);
+  --color-card: var(--tenant-card, #1a1a1a);
+  --color-elevado: #262626;
+  --color-fosco: #141414;
+  --color-borda: rgba(255, 255, 255, 0.09);
+  --color-borda-forte: rgba(255, 255, 255, 0.18);
+  --color-suave: rgba(255, 255, 255, 0.58);
+  --color-tenue: rgba(255, 255, 255, 0.38);
+  --color-sucesso: #16a34a;
+  --color-sucesso-claro: #4ade80;
+  --color-perigo: #dc2626;
+  --color-perigo-claro: #f87171;
+  --color-alerta: #d97706;
+  --color-alerta-claro: #fbbf24;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-fundo);
+  color: var(--color-marca);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-slot="tabular"] {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
