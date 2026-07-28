@@ -2,6 +2,12 @@
 -- TrueBarbershop — RLS (Row Level Security)
 -- ============================================================
 
+-- Garante que as roles autenticadas podem acessar as tabelas
+grant usage on schema public to anon, authenticated;
+grant all on all tables in schema public to anon, authenticated;
+grant all on all sequences in schema public to anon, authenticated;
+grant all on all functions in schema public to anon, authenticated;
+
 -- Helper: obtém o tenant_id do usuário autenticado
 create or replace function public.tenant_id()
 returns uuid

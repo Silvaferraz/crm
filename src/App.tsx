@@ -1,8 +1,22 @@
+import { BrowserRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AuthProvider } from '@/contexts/AuthContext'
+import { TenantProvider } from '@/contexts/TenantContext'
+import { AppRoutes } from '@/routes'
+
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <div className="min-h-screen bg-fundo flex items-center justify-center">
-      <h1 className="text-marca text-2xl font-semibold">TrueBarbershop</h1>
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <TenantProvider>
+          <AuthProvider>
+            <AppRoutes />
+          </AuthProvider>
+        </TenantProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   )
 }
 
