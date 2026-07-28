@@ -43,3 +43,25 @@ values
   ('eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02', '11111111-1111-1111-1111-111111111111', 'Felipe Santos', 'Felipão', '#f59e0b', 2),
   ('eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', '22222222-2222-2222-2222-222222222222', 'Dra. Amanda Costa', 'Amanda', '#ec4899', 1)
 on conflict (id) do nothing;
+
+-- Horários de trabalho (semana)
+insert into horarios_trabalho (tenant_id, profissional_id, dia_semana, hora_inicio, hora_fim)
+values
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01', 0, '09:00', '13:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01', 1, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01', 2, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01', 3, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01', 4, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01', 5, '09:00', '12:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02', 1, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02', 2, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02', 3, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02', 4, '09:00', '18:00'),
+  ('11111111-1111-1111-1111-111111111111', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02', 5, '09:00', '18:00'),
+  ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 1, '08:00', '19:00'),
+  ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 2, '08:00', '19:00'),
+  ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 3, '08:00', '19:00'),
+  ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 4, '08:00', '19:00'),
+  ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 5, '08:00', '18:00')
+on conflict do nothing;
+

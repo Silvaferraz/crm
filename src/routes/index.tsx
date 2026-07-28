@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { AppLayout } from '@/components/layout/AppLayout'
 import { Home } from '@/pages/Home'
 import { Agenda } from '@/pages/Agenda'
+import { Comanda } from '@/pages/Comanda'
 import { Clientes } from '@/pages/Clientes'
 import { Mensagens } from '@/pages/Mensagens'
 import { Caixa } from '@/pages/Caixa'
@@ -22,6 +23,7 @@ export function AppRoutes() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/agenda" element={<Agenda />} />
+          <Route path="/comanda" element={<Comanda />} />
           <Route path="/clientes" element={<Clientes />} />
           <Route path="/mensagens" element={<Mensagens />} />
           <Route path="/caixa" element={<Caixa />} />
