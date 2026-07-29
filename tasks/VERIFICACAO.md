@@ -38,10 +38,27 @@
 - [x] Tabela `agendamento_servicos` funciona com FK
 - [ ] RLS bloqueia acesso cross-tenant (tenant A não vê dados do tenant B) — não testado
 - [x] `grant execute` nas RPCs funciona para `authenticated` (testado com token JWT)
-- [x] Seed tem dados mínimos (profissionais, serviços, horários, clientes)
+- [x] Seed tem dados mínimos (profissionais, serviços, horários, clientes, templates)
 - [ ] Seed DEVERIA ter horários de trabalho — adicionado manualmente (não está na migração)
 
+## Testes API — Mensagens (Fase 8)
+- [x] RPC `gerar_fila_notificacoes` gera notificação com placeholders renderizados
+- [x] Chave determinística previne duplicata (`on conflict` funciona)
+- [x] RPC `marcar_notificacao_enviada` existe (security definer)
+- [x] Seeds de templates inseridos (4 p/ tenant 1, 2 p/ tenant 2)
+
 ## Testes Visuais (navegador) — pra você
+
+### Mensagens (`/mensagens`) — Fase 8
+- [ ] Aba "Para enviar" mostra notificações pendentes com texto renderizado
+- [ ] Aba "Na fila" mostra futuras
+- [ ] Aba "Enviadas" mostra histórico
+- [ ] Aba "Modelos" (admin) lista templates
+- [ ] Botão "Gerar agora" gera fila e mostra contagem
+- [ ] Clicar "Enviar WhatsApp" abre wa.me com texto + marca como enviada
+- [ ] Cancelar notificação funciona
+- [ ] CRUD templates: criar, editar, ativar/desativar, excluir
+- [ ] Badge visual por tipo (azul, rosa, laranja, verde)
 
 ### Login / Auth
 - [ ] Tela de login renderiza com campos usuário/senha
@@ -88,6 +105,21 @@
 - [ ] Na agenda, clicar "Ir para comanda" → vai pra `/comanda?agendamento=ID`
 - [ ] Serviços do agendamento pré-carregados na comanda
 - [ ] Finalizar comanda com agendamento → agendamento vira "concluido"
+
+### Branding / Negócio (`/ajustes/negocio`)
+- [ ] Upload de logo com preview
+- [ ] Remover logo
+- [ ] Fallback: inicial do nome aparece sem logo
+- [ ] Cores: primária, fundo, card (input color)
+- [ ] Cores aplicadas como CSS vars em tempo real
+- [ ] Fuso horário select com opções brasileiras
+
+### PWA
+- [ ] Service worker registrado (network-first nas telas)
+- [ ] Instalar app: prompt nativo aparece
+- [ ] Instalar app: iOS mostra instrução manual
+- [ ] Install banner some quando app está instalado
+- [ ] Tema escuro no manifest e apple-mobile-web-app
 
 ### Geral
 - [ ] Navegação bottom-nav (mobile) e sidebar (desktop)

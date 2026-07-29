@@ -24,7 +24,7 @@ export function Sidebar() {
     <aside className="hidden md:flex flex-col fixed left-0 top-0 bottom-0 w-60 bg-fosco border-r border-borda z-50">
       <div className="flex items-center gap-3 px-5 h-16 border-b border-borda">
         {tenant?.logo ? (
-          <img src={tenant.logo} alt={tenant.nome} className="h-8 w-8 rounded-full object-cover" />
+          <img src={`${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/logos/${tenant.logo}`} alt={tenant.nome} className="h-8 w-8 rounded-full object-cover" />
         ) : (
           <div className="h-8 w-8 rounded-full bg-elevado flex items-center justify-center">
             <span className="text-sm font-bold text-marca">
@@ -67,9 +67,11 @@ export function Sidebar() {
         {user?.super_admin && (
           <button
             onClick={() => navigate('/admin')}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-suave hover:bg-elevado/50 w-full transition-colors"
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm w-full transition-colors ${
+              location.pathname.startsWith('/admin') ? 'bg-elevado text-marca font-medium' : 'text-suave hover:bg-elevado/50'
+            }`}
           >
-            <SidebarIcon name="admin" ativo={false} />
+            <SidebarIcon name="admin" ativo={location.pathname.startsWith('/admin')} />
             Painel da Plataforma
           </button>
         )}

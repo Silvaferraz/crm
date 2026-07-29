@@ -1,9 +1,11 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { BottomNav } from './BottomNav'
 import { Sidebar } from './Sidebar'
+import { InstallPWA } from '@/components/ui/InstallPWA'
 import { useAuth } from '@/contexts/AuthContext'
 import { useTenant } from '@/contexts/TenantContext'
 import { useEffect } from 'react'
+import { atualizarMetaTags, atualizarManifest } from '@/lib/pwa'
 
 export function AppLayout() {
   const { user } = useAuth()
@@ -18,6 +20,13 @@ export function AppLayout() {
     root.style.setProperty('--tenant-primaria', tenant.cor_primaria || '#ffffff')
     root.style.setProperty('--tenant-fundo', tenant.cor_fundo || '#0c0c0c')
     root.style.setProperty('--tenant-card', tenant.cor_card || '#1a1a1a')
+
+    atualizarMetaTags(tenant)
+    atualizarManifest(tenant)
+
+    document.cookie = `tenant_nome=${encodeURIComponent(tenant.nome)}; path=/; max-age=${60*60*24*30}`
+    document.cookie = `tenant_cor=${encodeURIComponent(tenant.cor_primaria || '#ffffff')}; path=/; max-age=${60*60*24*30}`
+    if (tenant.logo) document.cookie = `tenant_logo=${encodeURIComponent(tenant.logo)}; path=/; max-age=${60*60*24*30}`
   }, [tenant])
 
   if (isLoginPage) {
@@ -33,6 +42,7 @@ export function AppLayout() {
         </div>
       </main>
       <BottomNav papel={user?.papel} isSuperAdmin={user?.super_admin} />
+      <InstallPWA />
     </div>
   )
 }

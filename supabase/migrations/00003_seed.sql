@@ -15,7 +15,8 @@ on conflict (id) do nothing;
 insert into usuarios (id, tenant_id, nome, usuario, papel, super_admin)
 values
   ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '11111111-1111-1111-1111-111111111111', 'Admin Teste', 'admin', 'owner', false),
-  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '22222222-2222-2222-2222-222222222222', 'Dra. Amanda', 'amanda', 'owner', false)
+  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '22222222-2222-2222-2222-222222222222', 'Dra. Amanda', 'amanda', 'owner', false),
+  ('cccccccc-cccc-cccc-cccc-cccccccccccc', '11111111-1111-1111-1111-111111111111', 'Super Admin', 'super', 'admin', true)
 on conflict (id) do nothing;
 
 -- Clientes fictícios
@@ -64,4 +65,15 @@ values
   ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 4, '08:00', '19:00'),
   ('22222222-2222-2222-2222-222222222222', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03', 5, '08:00', '18:00')
 on conflict do nothing;
+
+-- Templates de mensagem (desligados por padrão)
+insert into mensagem_templates (id, tenant_id, tipo, titulo, corpo, antecedencia, ativo)
+values
+  ('ffffff01-ffff-ffff-ffff-ffffffffffff', '11111111-1111-1111-1111-111111111111', 'lembrete_24h', 'Lembrete de agendamento', 'Olá {cliente_nome}! Passando pra lembrar do seu horário amanhã {data_hora} com {profissional_nome} no {estabelecimento}. Confirme se está tudo certo ou avise se precisar remarcar.', 24, false),
+  ('ffffff02-ffff-ffff-ffff-ffffffffffff', '11111111-1111-1111-1111-111111111111', 'aniversario', 'Feliz aniversário', 'Feliz aniversário, {cliente_nome}! 🎂 A {estabelecimento} deseja um dia incrível. Agende uma visita e ganhe um tratamento especial!', 0, false),
+  ('ffffff03-ffff-ffff-ffff-ffffffffffff', '11111111-1111-1111-1111-111111111111', 'retorno', 'Saudades de você', 'Oi {cliente_nome}, tudo bem? Faz tempo que você não aparece por aqui! A {estabelecimento} está com horários disponíveis. Agende agora!', 60, false),
+  ('ffffff04-ffff-ffff-ffff-ffffffffffff', '11111111-1111-1111-1111-111111111111', 'pos_atendimento', 'Obrigado pela visita', 'Oi {cliente_nome}! Obrigado pela visita hoje na {estabelecimento}. Esperamos que tenha gostado do atendimento com {profissional_nome}. Até a próxima!', 1, false),
+  ('ffffff05-ffff-ffff-ffff-ffffffffffff', '22222222-2222-2222-2222-222222222222', 'lembrete_24h', 'Lembrete de consulta', 'Olá {cliente_nome}! Lembramos da sua consulta amanhã {data_hora} com {profissional_nome} na {estabelecimento}. Confirme sua presença!', 24, false),
+  ('ffffff06-ffff-ffff-ffff-ffffffffffff', '22222222-2222-2222-2222-222222222222', 'aniversario', 'Feliz aniversário', 'Feliz aniversário, {cliente_nome}! 🎉 A {estabelecimento} deseja um ótimo dia!', 0, false)
+on conflict (id) do nothing;
 
